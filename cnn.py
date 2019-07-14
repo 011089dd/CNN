@@ -121,11 +121,11 @@ print(accuracy_score(y_test, y_pred))
 from keras.preprocessing import image
 #import cv2
 import glob
-#images = [cv2.imread(file) for file in glob.glob('E:/Study/Projects/NN/*jpg')]
+#images = [cv2.imread(file) for file in glob.glob('../NN/*jpg')]
 
 count_cats = 0
 count_dogs = 0
-for file in glob.glob('E:/Study/Projects/NN/data/*jpg'):
+for file in glob.glob('../NN/data/*jpg'):
     print(file)
     test_image = image.load_img(file,target_size=(64, 64))
     test_image = image.img_to_array(test_image)
@@ -152,14 +152,14 @@ datagen = image.ImageDataGenerator(rotation_range=10, width_shift_range=0.1,
 height_shift_range=0.1,shear_range=0.15, 
 zoom_range=0.1,channel_shift_range = 10, horizontal_flip=True)
 
-for file in glob.glob('E:/Study/Projects/NN/dataset/test_set/cats/*jpg'):
+for file in glob.glob('../NN/dataset/test_set/cats/*jpg'):
     test_image = image.load_img(file,target_size=(64, 64), grayscale=True) #grayscale=True
     test_image = image.img_to_array(test_image)
     test_image = np.expand_dims(test_image,axis=0)
 
     datagen.fit(test_image)
 
-    for x, val in zip(datagen.flow(test_image,save_to_dir='E:/Study/Projects/NN/dataset/test_set/cats/', 
+    for x, val in zip(datagen.flow(test_image,save_to_dir='../NN/dataset/test_set/cats/', 
                                save_prefix='augmented',save_format='jpg'),
     range(0)) :
         pass
